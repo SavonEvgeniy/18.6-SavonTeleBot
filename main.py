@@ -21,7 +21,7 @@ def convert(message: telebot.types.Message): #функция конвертац�
         if len(values) != 3:
             raise APIException('Неверное количество параметров.') #исключение количество параметров не = 3
         quote, base, amount = values
-        total_base = MoneyConverter.convert(quote, base, amount)
+        total_base = MoneyConverter.get_price(quote, base, amount)
     except APIException as e:
         bot.reply_to(message, f'Ошибка пользователя.\n{e}')
     except Exception as e:
